@@ -1,0 +1,23 @@
+# Lean 4 / Lake build artifacts
+.lake/
+lake-packages/
+build/
+
+# Editor files
+.vscode/
+*.olean
+*.ilean
+*.trace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup files and intermediate versions
+*_backup_*.lean
+*_fixed*.lean
+*_batch*.lean
+*_axioms_proved_*.lean
+ErdosAnalytical*.lean
+
+# Keep only the clean final version: ErdosTernaryDigits.lean
