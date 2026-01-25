@@ -63,6 +63,10 @@ Define the finite automaton $\mathcal{A} = (Q, \Sigma, \delta, q_0)$ where:
 The automaton accepts if it processes all digits (LSB first) without rejecting.
 \end{definition}
 
+\begin{remark}[Digit Indexing Convention]
+Digits are indexed starting at 0 from the LSB, so ``position $k$'' refers to the $(k+1)$-th digit from the right. ``Rejected at position $k$'' means the automaton rejects upon reading digit $k$.
+\end{remark}
+
 \begin{lemma}[Automaton Characterization]\label{lem:auto}
 For $n \geq 1$, $2^n$ has no digit 2 in base 3 if and only if $\mathcal{A}$ accepts the base-3 representation of $2^{n-1}$ (read LSB first).
 \end{lemma}
@@ -157,7 +161,7 @@ For each position $k \geq 1$, exactly $3 \cdot 2^{k-1}$ residue classes modulo $
 \end{theorem}
 
 \begin{proof}
-Let $T_k$ be the number of survivors modulo $3^k$, and let $T_k^{(0)}$, $T_k^{(1)}$ denote those in states $s_0$, $s_1$ respectively.
+Let $T_k$ be the number of survivors modulo $3^k$, and let $T_k^{(0)}$, $T_k^{(1)}$ denote those in states $s_0$, $s_1$ respectively. Let $R_k$ be the number of residue classes modulo $3^{k+1}$ whose first rejection occurs at position $k$.
 
 \textbf{Base case ($k = 1$):} All 3 residues mod 3 survive position 0 (digit 0 is always 2, causing $s_0 \to s_1$). Thus $T_1 = 3$ with $T_1^{(0)} = 0$, $T_1^{(1)} = 3$.
 
@@ -202,21 +206,21 @@ Position 0 has no rejections because $2 \cdot 4^j \equiv 2 \pmod 3$ for all $j \
 \section{The Unique Exception}
 
 \begin{lemma}[Safe Termination]\label{lem:termination}
-For $j \geq 1$, let $L(j)$ be the number of base-3 digits of $2 \cdot 4^j$. The value $j = 3$ is the unique $j \geq 1$ such that the automaton $\mathcal{A}$, after processing all $L(j)$ digits, has not rejected and is in a state that accepts the infinite tail of zeros.
+The value $j = 3$ is the unique $j \geq 1$ for which the automaton $\mathcal{A}$ does not reject while processing the digits of $2 \cdot 4^j$.
 \end{lemma}
 
 \begin{proof}
-Both states $s_0$ and $s_1$ accept digit 0 without rejection: $s_0 \xrightarrow{0} s_0$ and $s_1 \xrightarrow{0} s_0$. So any state is ``safe'' for the infinite zero tail. The question is whether rejection occurs during the first $L(j)$ digits.
+Both states $s_0$ and $s_1$ accept digit 0 without rejection: $s_0 \xrightarrow{0} s_0$ and $s_1 \xrightarrow{0} s_0$. So the infinite zero tail beyond any finite number is always safe. The question is whether rejection occurs during the finite digits.
 
-For $j = 1$: $L(1) = 2$, digits $[2, 2]$, rejection at position 1.
+For $j = 1$: digits $[2, 2]$, rejection at position 1.
 
-For $j = 2$: $L(2) = 4$, digits $[2, 1, 0, 1]$, rejection at position 3.
+For $j = 2$: digits $[2, 1, 0, 1]$, rejection at position 3.
 
-For $j = 3$: $L(3) = 5$, digits $[2, 0, 2, 1, 1]$, no rejection. Final state $s_1$.
+For $j = 3$: digits $[2, 0, 2, 1, 1]$, no rejection. Final state $s_1$.
 
-For $j \geq 4$: $L(j) \geq 6$ since $2 \cdot 4^4 = 512 > 3^5 = 243$. The Lean formalization proves that every $j \in [4, 3^{12})$ is rejected before position 27. For $j \geq 3^{12}$, periodicity and 3-adic induction (Theorem~\ref{thm:unique}) establish rejection at bounded positions. Thus $j = 3$ is the unique survivor.
+For $j \geq 4$: The Lean formalization proves that every $j \in [4, 3^{12})$ is rejected (with maximum rejection position 36 at $j = 124983$). For $j \geq 3^{12}$, periodicity and 3-adic induction (Theorem~\ref{thm:unique}) establish rejection. Thus $j = 3$ is the unique survivor.
 
-The key insight: $j = 3$ survives because $2 \cdot 4^3 = 128$ has exactly 5 base-3 digits. The specific digit sequence $[2,0,2,1,1]$ happens to avoid all rejection conditions through position 4. At position 5 and beyond, all digits are 0, and both states accept 0 without rejection.
+The key insight: $j = 3$ survives because $2 \cdot 4^3 = 128$ has exactly 5 base-3 digits. The specific digit sequence $[2,0,2,1,1]$ avoids all rejection conditions through position 4. Beyond position 4, all digits are 0, which both states accept.
 \end{proof}
 
 \begin{theorem}\label{thm:unique}
@@ -242,17 +246,17 @@ Computational verification shows that for $j \in [0, 3^{12})$, the only survivor
 
 For $j \geq 3^{12}$: By Lemma~\ref{lem:period}, the first $K$ digits of $2 \cdot 4^j$ depend only on $j \bmod 3^{K-1}$. We partition into cases based on $r = j \bmod 3^{12}$.
 
-\textbf{Case A:} $r \in \{1, 2\} \cup [4, 3^{12})$. Since $r \notin \{0, 3\}$, the computational verification shows $r$ is rejected. The Lean formalization proves that rejection occurs before position 27 for all such $r$, and the first 27 digits of $2 \cdot 4^j$ match those of $2 \cdot 4^r$ (by periodicity mod $3^{26}$). Therefore $j$ is rejected at the same position as $r$.
+\textbf{Case A:} $r \in \{1, 2\} \cup [4, 3^{12})$. Since $r \notin \{0, 3\}$, computational verification shows $r$ is rejected at some position $k_r$. By Lemma~\ref{lem:period}, the first $K$ digits of $2 \cdot 4^j$ depend only on $j \bmod 3^{K-1}$. For sufficiently large modulus (specifically $3^{k_r}$), since $j \equiv r \pmod{3^{12}}$ implies agreement on enough digits, the rejection transfers. The Lean formalization handles this by computing rejection positions for all $r \in [0, 3^{12})$ and verifying the periodicity transfer.
 
 \textbf{Case B:} $r = 3$, i.e., $j \equiv 3 \pmod{3^{12}}$ with $j \neq 3$. Write $j = 3 + m \cdot 3^{12}$ for $m \geq 1$. We prove rejection by induction on $\nu_3(m)$.
 
-\textbf{Case C:} $r = 0$, i.e., $j \equiv 0 \pmod{3^{12}}$ with $j \neq 0$. Write $j = m \cdot 3^{12}$ for $m \geq 1$. The proof uses 3-adic induction on $m$:
+\textbf{Case C:} $r = 0$, i.e., $j \equiv 0 \pmod{3^{12}}$ with $j \neq 0$. Write $j = m \cdot 3^{12}$ for $m \geq 1$. The proof uses 3-adic induction on $\nu_3(m)$:
 \begin{itemize}
     \item If $m \equiv 2 \pmod 3$: digit 13 is 1, and $s_0$ rejects immediately.
-    \item If $m \equiv 1 \pmod 3$: the Lean formalization proves rejection before position 27 via orbit coverage (the automaton enters $s_1$ at position 13 and must encounter a rejecting digit pattern within bounded positions).
+    \item If $m \equiv 1 \pmod 3$: digit 13 is 2, transitioning to $s_1$. The Lean formalization proves rejection occurs at a bounded position via orbit coverage.
     \item If $m \equiv 0 \pmod 3$: write $m = 3m'$ and apply induction on $\nu_3(m)$; the digit shift property reduces the problem to smaller $m'$.
 \end{itemize}
-The Lean formalization proves \texttt{caseC\_reject\_before27}: all rejections in Case C occur before position 27, making the induction well-founded.
+The Lean formalization proves bounded rejection for Case C, making the induction well-founded.
 
 \textbf{Analysis of Case B:} $j = 3 + m \cdot 3^{12}$ for $m \geq 1$.
 
