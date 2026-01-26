@@ -22,7 +22,7 @@ Claude\thanks{Anthropic. AI system contributing to proof engineering and formali
 \and
 GPT\thanks{OpenAI. AI system contributing to proof strategy development.}}
 
-\date{January 2025 \\ \small Version 6 (2025-01-25 18:30 UTC)}
+\date{January 2025 \\ \small Version 7 (2025-01-25 19:00 UTC)}
 
 \begin{document}
 
@@ -172,7 +172,7 @@ Let $T_k$ be the number of survivors modulo $3^k$, and let $T_k^{(0)}$, $T_k^{(1
     \item digit 1 = 1: $s_1 \to s_1$ (survives)
     \item digit 1 = 2: $s_1$ rejects
 \end{itemize}
-So $R_1 = 1$ survivor $\times$ 3 extensions $= 3$, and $T_2 = 6$ with $T_2^{(0)} = 3$, $T_2^{(1)} = 3$.
+So one residue class mod 3 rejects at position 1, and it has 3 lifts mod 9, giving $R_1 = 3$. The remaining $T_2 = 6$ survivors satisfy $T_2^{(0)} = 3$, $T_2^{(1)} = 3$.
 
 \textbf{Inductive step ($k \geq 2$):} Assume $T_k = 3 \cdot 2^{k-1}$ with $T_k^{(0)} = T_k^{(1)} = T_k/2$.
 
@@ -215,7 +215,7 @@ For $1 \leq j < 3^{12}$, the automaton $\mathcal{A}$ accepts $2 \cdot 4^j$ if an
 \begin{proof}
 Verified computationally via \texttt{native\_decide} in Lean.
 
-For the small cases: $j = 1$ has digits $[2, 2]$ (LSB first), rejection at position 1. $j = 2$ has digits $[2, 1, 0, 1]$, rejection at position 3. $j = 3$ has digits $[2, 0, 2, 1, 1]$, no rejection---the sequence avoids all rejection conditions, and trailing zeros are always safe since $s_0 \xrightarrow{0} s_0$ and $s_1 \xrightarrow{0} s_0$.
+For the small cases: $j = 1$ gives $8 = (22)_3$ (LSB-first: $[2, 2]$), rejection at position 1. $j = 2$ gives $32 = (1012)_3$ (LSB-first: $[2, 1, 0, 1]$), rejection at position 3. $j = 3$ gives $128 = (11202)_3$ (LSB-first: $[2, 0, 2, 1, 1]$), no rejection---the sequence avoids all rejection conditions, and trailing zeros are always safe.
 \end{proof}
 
 \begin{theorem}\label{thm:unique}
@@ -231,8 +231,8 @@ After position 4, the number terminates, and all subsequent digits are 0. The st
 
 \textbf{Why $j = 1, 2$ are rejected:}
 \begin{itemize}
-    \item $j = 1$: $2 \cdot 4 = 8 = [2, 2]_3$. Trace: $s_0 \xrightarrow{2} s_1 \xrightarrow{2}$ \textsc{reject} at position 1.
-    \item $j = 2$: $2 \cdot 16 = 32 = [2, 1, 0, 1]_3$. Trace: $s_0 \xrightarrow{2} s_1 \xrightarrow{1} s_1 \xrightarrow{0} s_0 \xrightarrow{1}$ \textsc{reject} at position 3.
+    \item $j = 1$: $2 \cdot 4 = 8 = (22)_3$ (LSB-first: $[2, 2]$). Trace: $s_0 \xrightarrow{2} s_1 \xrightarrow{2}$ \textsc{reject} at position 1.
+    \item $j = 2$: $2 \cdot 16 = 32 = (1012)_3$ (LSB-first: $[2, 1, 0, 1]$). Trace: $s_0 \xrightarrow{2} s_1 \xrightarrow{1} s_1 \xrightarrow{0} s_0 \xrightarrow{1}$ \textsc{reject} at position 3.
 \end{itemize}
 
 \textbf{Why all $j \geq 4$ are rejected:}
@@ -260,7 +260,7 @@ By Lemma~\ref{lem:lte}, $4^{3^{12}} = 1 + 3^{13} u$ where $u \equiv 1 \pmod 3$. 
 2 \cdot 4^j = 128 \cdot (1 + 3^{13} u)^m = 128 \left(1 + m \cdot 3^{13} u + \binom{m}{2} 3^{26} u^2 + \cdots\right)
 \]
 
-The first 5 digits match $128 = [2,0,2,1,1]_3$, ending in state $s_1$. Since $128 < 3^5 = 243$, digits 5--12 are zero. The automaton trace: $s_1 \xrightarrow{0} s_0 \xrightarrow{0} s_0 \cdots \xrightarrow{0} s_0$, reaching position 13 in state $s_0$.
+The first 5 digits match $128 = (11202)_3$ (LSB-first: $[2,0,2,1,1]$), ending in state $s_1$. Since $128 < 3^5 = 243$, digits 5--12 are zero. The automaton trace: $s_1 \xrightarrow{0} s_0 \xrightarrow{0} s_0 \cdots \xrightarrow{0} s_0$, reaching position 13 in state $s_0$.
 
 The contribution $128 m \cdot 3^{13} u$ affects digits 13 and higher. The digit at position 13 is:
 \[
