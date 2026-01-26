@@ -22,7 +22,7 @@ Claude\thanks{Anthropic. AI system contributing to proof engineering and formali
 \and
 GPT\thanks{OpenAI. AI system contributing to proof strategy development.}}
 
-\date{January 2025 \\ \small Version 7 (2025-01-25 19:00 UTC)}
+\date{January 2025 \\ \small Version 8 (2025-01-25 19:45 UTC)}
 
 \begin{document}
 
@@ -117,7 +117,7 @@ since all terms with $i \geq 1$ contribute at least $3^K$ (using $\nu_3\binom{3^
 To show the order is exactly $3^{K-1}$, we prove $4^{3^{K-2}} \not\equiv 1 \pmod{3^K}$ for $K \geq 2$. By the Lifting the Exponent (LTE) lemma, $\nu_3(4^{3^{K-2}} - 1) = K-1 < K$.
 \end{proof}
 
-\begin{lemma}[Lifting the Exponent]\label{lem:lte}
+\begin{lemma}[3-adic Expansion]\label{lem:lte}
 For $k \geq 0$, $4^{3^k} = 1 + 3^{k+1} \cdot u_k$ where $u_k \equiv 1 \pmod{3}$.
 \end{lemma}
 
@@ -206,7 +206,7 @@ This sum represents a measure-theoretic accounting: viewing residue classes as c
 Position 0 has no rejections because $2 \cdot 4^j \equiv 2 \pmod 3$ for all $j \geq 0$, so the LSB is always 2, which causes $s_0 \to s_1$ (not rejection).
 \end{remark}
 
-\section{The Unique Exception}
+\section{The Unique Survivor ($j = 3$)}
 
 \begin{lemma}[Finite Verification]\label{lem:finite}
 For $1 \leq j < 3^{12}$, the automaton $\mathcal{A}$ accepts $2 \cdot 4^j$ if and only if $j = 3$. The maximum rejection position among rejected $j$ in this range is 36 (at $j = 124983$).
@@ -241,7 +241,7 @@ Computational verification shows that for $j \in [0, 3^{12})$, the only survivor
 
 For $j \geq 3^{12}$: By Lemma~\ref{lem:period}, the first $K$ digits of $2 \cdot 4^j$ depend only on $j \bmod 3^{K-1}$. We partition into cases based on $r = j \bmod 3^{12}$.
 
-\textbf{Case A:} $r \in \{1, 2\} \cup [4, 3^{12})$. Since $r \notin \{0, 3\}$, computational verification shows $r$ is rejected at some position $k_r$. For those $r$ with $k_r \leq 12$, rejection transfers to all $j \equiv r \pmod{3^{12}}$ by Lemma~\ref{lem:period} (since $j \equiv r \pmod{3^{12}}$ implies agreement on the first 13 digits, which suffices when rejection occurs by position 12). For $r$ with $k_r > 12$, the Lean formalization uses a 3-adic induction argument similar to Cases B and C: writing $j = r + m \cdot 3^{12}$, the proof analyzes the digit structure beyond position 12 and establishes rejection via orbit coverage and digit shift lemmas.
+\textbf{Case A:} $r \notin \{0, 3\}$ (i.e., $r \in \{1, 2, 4, 5, \ldots, 3^{12}-1\}$). Since $r \notin \{0, 3\}$, computational verification shows $r$ is rejected at some position $k_r$. For those $r$ with $k_r \leq 12$, rejection transfers to all $j \equiv r \pmod{3^{12}}$ by Lemma~\ref{lem:period} (since $j \equiv r \pmod{3^{12}}$ implies agreement on the first 13 digits, which suffices when rejection occurs by position 12). For $r$ with $k_r > 12$, the Lean formalization uses a 3-adic induction argument similar to Cases B and C: writing $j = r + m \cdot 3^{12}$, the proof analyzes the digit structure beyond position 12 and establishes rejection via orbit coverage and digit shift lemmas.
 
 \textbf{Case B:} $r = 3$, i.e., $j \equiv 3 \pmod{3^{12}}$ with $j \neq 3$. Write $j = 3 + m \cdot 3^{12}$ for $m \geq 1$. We prove rejection by induction on $\nu_3(m)$.
 
