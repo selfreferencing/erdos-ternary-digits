@@ -42,7 +42,7 @@ lake build
 
 ## Files
 
-- `ErdosAnalytical_fixed2.lean` - Main proof file containing the complete formalization
+- `ErdosTernaryDigits.lean` - Main proof file containing the complete formalization
 - `lakefile.lean` - Lake build configuration
 - `lake-manifest.json` - Dependency versions (Mathlib)
 
