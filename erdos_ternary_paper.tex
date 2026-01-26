@@ -22,7 +22,7 @@ Claude\thanks{Anthropic. AI system contributing to proof engineering and formali
 \and
 GPT\thanks{OpenAI. AI system contributing to proof strategy development.}}
 
-\date{January 2025}
+\date{January 2025 \\ \small Version 5 (2025-01-25 18:00 UTC)}
 
 \begin{document}
 
@@ -197,6 +197,7 @@ The coverage fraction is $R_k / 3^{k+1} = 2^{k-1}/3^k$, and:
 \[
 \sum_{k=1}^{\infty} \frac{2^{k-1}}{3^k} = \frac{1}{3} \cdot \frac{1}{1 - 2/3} = 1
 \]
+This sum represents a measure-theoretic accounting: viewing residue classes as cylinder sets in $\mathbb{Z}_3$, the rejection sets have total measure 1. However, this density statement alone does not rule out a measure-zero exceptional set; the 3-adic induction in Theorem~\ref{thm:unique} provides the deterministic argument that $j = 3$ is the unique survivor.
 \end{proof}
 
 \begin{remark}
@@ -246,7 +247,7 @@ Computational verification shows that for $j \in [0, 3^{12})$, the only survivor
 
 For $j \geq 3^{12}$: By Lemma~\ref{lem:period}, the first $K$ digits of $2 \cdot 4^j$ depend only on $j \bmod 3^{K-1}$. We partition into cases based on $r = j \bmod 3^{12}$.
 
-\textbf{Case A:} $r \in \{1, 2\} \cup [4, 3^{12})$. The Lean formalization proves rejection for all such $j$ by extending the computational verification: for each $r \notin \{0, 3\}$ with rejection position $k_r$, the proof verifies that $j \equiv r \pmod{3^{k_r}}$ (which follows from $j \equiv r \pmod{3^{12}}$ when $k_r \leq 12$, and is handled separately for larger $k_r$). The key lemma \texttt{caseA\_transfer} establishes that the rejection at position $k_r$ transfers from $r$ to any $j \geq 3^{12}$ with $j \equiv r \pmod{3^{12}}$.
+\textbf{Case A:} $r \in \{1, 2\} \cup [4, 3^{12})$. Since $r \notin \{0, 3\}$, computational verification shows $r$ is rejected at some position $k_r$. For those $r$ with $k_r \leq 12$, rejection transfers to all $j \equiv r \pmod{3^{12}}$ by Lemma~\ref{lem:period} (since $j \equiv r \pmod{3^{12}}$ implies agreement on the first 13 digits, which suffices when rejection occurs by position 12). For $r$ with $k_r > 12$, the Lean formalization uses a 3-adic induction argument similar to Cases B and C: writing $j = r + m \cdot 3^{12}$, the proof analyzes the digit structure beyond position 12 and establishes rejection via orbit coverage and digit shift lemmas.
 
 \textbf{Case B:} $r = 3$, i.e., $j \equiv 3 \pmod{3^{12}}$ with $j \neq 3$. Write $j = 3 + m \cdot 3^{12}$ for $m \geq 1$. We prove rejection by induction on $\nu_3(m)$.
 
@@ -309,7 +310,7 @@ For $n > 8$, we show $2^n$ contains digit 2.
 
 \section{The Subdivision Pattern}
 
-The proof was discovered via iterative subdivision. At each position $k$, the rejection classes form a fractal-like structure:
+The proof was discovered via iterative subdivision. At each position $k$, the rejection classes exhibit a regular pattern (Table~\ref{tab:coverage}).
 
 \begin{table}[h]
 \centering
@@ -325,6 +326,7 @@ $k$ & $3 \cdot 2^{k-1}$ classes $\pmod{3^{k+1}}$ & $3 \cdot 2^{k-1}$ & $2^{k-1}/
 \bottomrule
 \end{tabular}
 \caption{The coverage pattern by rejection position}
+\label{tab:coverage}
 \end{table}
 
 This pattern guided the proof discovery. The actual proof uses 3-adic induction: for $m \equiv 1, 2 \pmod{3}$, orbit coverage forces rejection within a bounded number of positions after the first nonzero digit; for $m \equiv 0 \pmod{3}$, digit shift lemmas reduce to smaller 3-adic valuation. The Lean formalization verifies this structure completely.
