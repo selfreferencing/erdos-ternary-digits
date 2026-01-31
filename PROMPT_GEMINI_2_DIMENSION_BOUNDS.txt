@@ -1,0 +1,51 @@
+GEMINI DEEP RESEARCH: Hausdorff Dimension Bounds for Erdős Exceptional Sets
+
+RESEARCH QUESTION:
+What are the best known Hausdorff dimension bounds for the exceptional set in the Erdős ternary digits problem, and what techniques produce them?
+
+CONTEXT:
+Lagarias reformulated the Erdős conjecture in terms of exceptional sets. Define:
+- E(Z_3) = {λ ∈ Z_3 : the orbit λ·2^n hits the 3-adic Cantor set Σ_{3,2̄} infinitely often}
+
+The conjecture is equivalent to: 1 ∉ E(Z_3), or more strongly, E(Z_3) = {0}.
+
+SPECIFIC QUESTIONS TO RESEARCH:
+
+1. LAGARIAS'S ORIGINAL BOUNDS
+   - Paper: arXiv:math/0512006
+   - What's the dimension bound he proves?
+   - What's the technique (nesting sets, subadditivity)?
+
+2. ABRAM-BOLSHAKOV-LAGARIAS IMPROVEMENT
+   - Paper: arXiv:1508.05967
+   - Current best bound: dim(E) ≤ log_3(φ) ≈ 0.438
+   - What's the "nesting constant" Γ?
+   - How is the golden ratio φ involved?
+
+3. AUTOMATA-THEORETIC METHODS
+   - How are finite automata used to describe intersection sets?
+   - The spectral radius approach to dimension
+   - Why are these dimensions algebraic numbers?
+
+4. PATH-SET FRACTALS
+   - What are path-set fractals?
+   - How does the automaton structure constrain dimension?
+   - Can this be pushed to prove dim = 0?
+
+5. INTERSECTION SETS
+   - Structure of C(M_1, ..., M_k) = ∩ (1/M_i) Σ_{3,2̄}
+   - Dimension bounds for multiple intersections
+   - What happens as k → ∞?
+
+6. THE GAP TO FINITENESS
+   - Even dim = 0 doesn't immediately give finiteness
+   - What additional argument would be needed?
+   - Is there a "Lagarias Conjecture B" (dim = 0)?
+
+7. RELATED DIMENSION RESULTS
+   - Shmerkin's work on ×2,×3 intersections
+   - Hochman's results on self-similar measures
+   - Wu's dimension drop results
+
+DELIVERABLE:
+A technical survey of all dimension bounds for this problem, the techniques used, and what improvement would be needed to prove the conjecture.

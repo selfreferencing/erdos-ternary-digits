@@ -1,0 +1,56 @@
+RESEARCH PROMPT: Comparative Analysis of Solved vs Unsolved Digit Problems
+
+BACKGROUND:
+The Erdős ternary digits conjecture remains open since 1979. I want to understand why by comparing it to similar problems that WERE solved.
+
+RESEARCH TASK:
+Find digit problems that share features with Erdős but have been resolved. Analyze what made them tractable.
+
+1. SOLVED PROBLEMS TO INVESTIGATE
+
+   a) Dimitrov-Howe (2021): "If 2^n in base 3 has ≤25 digit-1s, then n ∈ {0,2,8}"
+      - Why does bounding the number of 1s make it tractable?
+      - What's the proof technique?
+      - Can it be extended?
+
+   b) Stewart's S-unit theorem applications
+      - What digit problems has it solved?
+      - Why doesn't it solve Erdős?
+
+   c) Mahler's work on digit problems
+      - What did Mahler prove about digits of algebraic numbers?
+      - Any techniques applicable here?
+
+   d) Cobham's theorem (1969)
+      - Sequences recognized by automata in two multiplicatively independent bases
+      - Why doesn't this immediately solve Erdős?
+
+   e) Any finiteness results for "digit avoidance" in exponential sequences
+      - Are there ANY infinite exponential sequences proved to avoid a digit only finitely often?
+
+2. STRUCTURAL COMPARISON
+
+   For each solved problem, identify:
+   - The finiteness mechanism (why are there only finitely many solutions?)
+   - The counting mechanism (how do you bound the count?)
+   - The explicit bound (can you compute it?)
+
+   For Erdős, identify which mechanism is missing.
+
+3. THE NEAREST UNSOLVED PROBLEMS
+
+   Find other open problems of similar difficulty:
+   - Normality of sqrt(2) in base 10
+   - Gel'fond's problems on digit sums
+   - Furstenberg's ×2,×3 conjecture
+
+   Is Erdős easier or harder than these? Why?
+
+4. NEGATIVE RESULTS
+
+   Are there proofs that certain approaches CANNOT work?
+   - Lower bounds on methods
+   - Barriers like natural proofs or relativization
+   - Results showing the problem is "hard" in some formal sense
+
+Synthesize: What distinguishes solved from unsolved digit problems?

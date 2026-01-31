@@ -1,0 +1,44 @@
+RESEARCH PROMPT: Field Mapping for the Erdős Ternary Digits Problem
+
+BACKGROUND:
+The Erdős ternary digits conjecture (1979): Every sufficiently large 2^n contains digit 2 in base 3.
+
+The problem involves the orbit {n·log_3(2) mod 1} and whether it hits a fractal target (the ternary Cantor set C_3 or its logarithmic image) finitely or infinitely often.
+
+RESEARCH TASK:
+I need to identify which mathematical fields and subfields are most relevant to this problem. For each field, identify:
+
+1. ERGODIC THEORY / DYNAMICAL SYSTEMS
+   - Shrinking target problems
+   - Borel-Cantelli lemmas for dynamical systems
+   - Mixing vs non-mixing systems
+   - What's the state of shrinking target theory for irrational rotations?
+
+2. DIOPHANTINE APPROXIMATION
+   - Properties of log_3(2) as an irrational number
+   - Badly approximable numbers
+   - Schmidt games and winning sets
+   - How do Diophantine properties of α affect orbit behavior?
+
+3. FRACTAL GEOMETRY / HAUSDORFF DIMENSION
+   - Dimension of exceptional sets
+   - Intersection theory for Cantor sets
+   - What dimension bounds exist for this problem?
+
+4. p-ADIC ANALYSIS
+   - 3-adic formulation of the problem
+   - ×2 dynamics on Z_3
+   - Exceptional sets in p-adic setting
+
+5. AUTOMATA THEORY / SYMBOLIC DYNAMICS
+   - Digit sequences and finite automata
+   - Cobham's theorem and base dependence
+   - Path-set fractals
+
+For each field, provide:
+- Key papers and authors working on related problems
+- The specific tools or theorems that might apply
+- Known limitations or reasons why standard techniques fail
+- Open problems in that field that would imply progress on Erdős
+
+Which field is most likely to yield the breakthrough?

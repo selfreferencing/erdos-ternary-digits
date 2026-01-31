@@ -1,0 +1,51 @@
+GEMINI DEEP RESEARCH: Measure Rigidity and the ×2,×3 Problem
+
+RESEARCH QUESTION:
+How does measure rigidity theory (Furstenberg, Rudolph, Lindenstrauss) relate to the Erdős ternary digits conjecture?
+
+CONTEXT:
+The Erdős problem involves the interaction of base 2 (powers of 2) and base 3 (ternary digits). This is exactly the setting of Furstenberg's ×2,×3 conjecture about invariant measures.
+
+SPECIFIC QUESTIONS TO RESEARCH:
+
+1. FURSTENBERG'S ×2,×3 CONJECTURE
+   - Precise statement
+   - Current status (what's proved, what's open)
+   - Relationship to Erdős: Would a full proof of Furstenberg imply Erdős?
+
+2. RUDOLPH'S THEOREM
+   - Measures invariant under ×2 and ×3 with positive entropy
+   - Why doesn't this immediately solve digit problems?
+
+3. LINDENSTRAUSS'S WORK
+   - Quantum unique ergodicity
+   - Littlewood conjecture progress
+   - Measure rigidity on homogeneous spaces
+   - Any implications for digit problems?
+
+4. THE SPECIFIC ORBIT PROBLEM
+   - Rigidity results typically concern MEASURES, not single orbits
+   - Is there a way to go from measure statements to orbit statements?
+   - The "exceptional set" approach as a bridge
+
+5. HOCHMAN-SHMERKIN RESULTS
+   - Self-similar measures and dimension
+   - Exact overlaps and algebraic numbers
+   - Intersection of ×p and ×q invariant sets
+
+6. JOHNSON'S THEOREM
+   - Sets invariant under both ×2 and ×3
+   - The only closed invariant sets are finite unions of orbits or the whole space
+   - Does this help with Erdős?
+
+7. QUANTITATIVE RIGIDITY
+   - Any results quantifying how fast orbits become equidistributed?
+   - "Finite-time" rigidity vs asymptotic rigidity
+   - This would be the "log-time cancellation" we're looking for
+
+8. CONDITIONAL IMPLICATIONS
+   - Are there statements of form "If [rigidity result X] then Erdős holds"?
+   - What's the minimal rigidity statement that would suffice?
+
+DELIVERABLE:
+A survey of measure rigidity as it relates to the ×2,×3 setting, with specific assessment of what can and cannot be extracted for the Erdős conjecture.

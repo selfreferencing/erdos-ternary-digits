@@ -1,0 +1,30 @@
+RESEARCH PROMPT: What Would Be the Minimal New Mathematical Result?
+
+BACKGROUND:
+The Erdős ternary digits conjecture (1979) states that every sufficiently large power of 2 contains digit 2 in base 3. Only 2^0=1, 2^2=4, 2^8=256 avoid digit 2. Verified computationally to n ≈ 6×10^21.
+
+The core obstruction is the "log-time regime": at scale 3^k, the target (digit-2-avoiding numbers) has density (2/3)^k, but we only have O(k) samples of powers of 2 with k digits. Standard discrepancy bounds give O(1/k) error, but we need O((2/3)^k) - an exponential gap.
+
+CURRENT STATE:
+- Lagarias (2009): Dimension of exceptional set ≤ 1/2
+- Abram-Bolshakov-Lagarias (2015): Improved to dim ≤ log_3(φ) ≈ 0.438
+- Dimitrov-Howe: If 2^n has ≤25 ones in base 3, then n ∈ {0,2,8}
+- No finiteness proof exists
+
+QUESTION:
+What would be the minimal new mathematical result that, if proved, would settle the Erdős conjecture?
+
+Specifically:
+1. Is there a single lemma or theorem that would bridge the gap between current knowledge and the conjecture?
+
+2. What form would such a result take? Would it be:
+   - A discrepancy bound with exponential decay?
+   - A rigidity theorem about ×2 orbits in Z_3?
+   - A Diophantine approximation result about log_3(2)?
+   - Something about the structure of digit-avoiding sets?
+
+3. Are there "conditional" versions - results of the form "If X holds, then Erdős holds" where X is a plausible but unproved conjecture?
+
+4. What's the relationship between proving dim(E) = 0 (Lagarias's Conjecture B) and proving the original Erdős conjecture? Does one imply the other?
+
+Please provide specific theorem statements that would suffice, and assess their difficulty relative to known results.

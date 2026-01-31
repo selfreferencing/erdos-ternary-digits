@@ -1,0 +1,49 @@
+The attached `ErdosAnalytical_fixed2.lean` still has 44 errors. Here are the specific fixes needed:
+
+**1. Lines 47-48 - Orphaned doc comment:**
+There's a doc comment with no declaration after it. Either:
+- Delete lines 47-48 entirely (the orphaned comment), OR
+- Add back the axiom it was documenting:
+```lean
+/-- Older helper: `ofDigits` of digits after dropping `i` equals division by `p^i`. -/
+axiom self_div_pow_eq_ofDigits_drop (p i n : Nat) (h : 1 < p) :
+    Nat.ofDigits p ((Nat.digits p n).drop i) = n / p^i
+```
+
+**2. Lines 213, 232, 262, 291, 296, 325, 474 - Multiplication order / Nat.pow_pos:**
+These are all variations of:
+- `a * b` vs `b * a` - fix with `mul_comm`
+- `Nat.pow_pos` used as function - needs explicit: `Nat.pow_pos (by decide : 0 < 3) k`
+
+**3. Line 383 - Unknown constant:**
+`Nat.ModEq.of_eq` doesn't exist. Replace with:
+```lean
+-- Instead of: Nat.ModEq.of_eq h
+-- Use: h ▸ Nat.ModEq.refl _
+-- Or just: by rw [h]
+```
+
+**4. Lines 760-763 - Syntax errors with `prefix`:**
+There's likely a `where` clause or pattern match with:
+```lean
+prefix ... -- wrong
+```
+Should probably be:
+```lean
+let prefix := ... -- correct
+```
+Or rename the variable since `prefix` is a keyword.
+
+**5. Lines 784, 799 - simp recursion:**
+Add `set_option maxRecDepth 2000` near these, or simplify the simp call.
+
+**6. Line 963 - Maximum recursion depth:**
+Either increase `maxRecDepth` or restructure the proof to avoid deep recursion.
+
+**Testing command:**
+```bash
+lake env lean ErdosAnalytical_fixed2.lean 2>&1 | grep "error:" | wc -l
+```
+Goal: 0 errors.
+
+Return the complete fixed file.

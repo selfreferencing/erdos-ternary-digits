@@ -1,0 +1,46 @@
+GEMINI DEEP RESEARCH: Shrinking Targets and Borel-Cantelli for Rotations
+
+RESEARCH QUESTION:
+What is known about shrinking target problems for irrational rotations on the circle, specifically when the target is a fractal set like the Cantor set?
+
+CONTEXT:
+The Erdős ternary digits conjecture can be reformulated as: Does the orbit {n·α mod 1} (where α = log_3(2)) hit the ternary Cantor set C_3 only finitely often?
+
+The target "shrinks" in the sense that we're interested in hitting the k-digit approximation C_3^(k), which has measure (2/3)^k.
+
+SPECIFIC QUESTIONS TO RESEARCH:
+
+1. DYNAMICAL BOREL-CANTELLI LEMMAS
+   - What are the standard Borel-Cantelli results for dynamical systems?
+   - Which systems satisfy strong Borel-Cantelli (hitting shrinking targets)?
+   - Do irrational rotations satisfy any form of dynamical BC?
+
+2. SHRINKING TARGET PROPERTY (STP)
+   - Define the Shrinking Target Property precisely
+   - Which systems have STP? Which don't?
+   - What's known for circle rotations specifically?
+   - Papers by Tseng, Fayad, Kim on this topic
+
+3. THE ROTATION OBSTRUCTION
+   - Rotations are ergodic but NOT mixing
+   - How does lack of mixing affect shrinking target results?
+   - Are there negative results showing STP fails for rotations?
+
+4. FRACTAL TARGETS
+   - Standard STP results are for shrinking balls/intervals
+   - What's known when the target is fractal (Cantor-like)?
+   - Does the Fourier structure of the target matter?
+   - Paper: "Rare events for Cantor target sets" (arXiv:1903.07200)
+
+5. QUANTITATIVE BOUNDS
+   - For rotations hitting shrinking intervals: what's the threshold?
+   - Relationship to Diophantine properties of the rotation angle
+   - What's known for badly approximable vs Liouville angles?
+
+6. THE SPECIFIC CASE α = log_3(2)
+   - Any results specifically about this irrational?
+   - Is log_3(2) badly approximable? What are its continued fraction properties?
+   - Does its transcendence help?
+
+DELIVERABLE:
+A comprehensive survey of shrinking target theory for rotations, with assessment of which results apply (or fail to apply) to the Erdős setting.

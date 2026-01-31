@@ -1,0 +1,44 @@
+RESEARCH PROMPT: Proof Template Analysis for Erdős Ternary Digits
+
+BACKGROUND:
+The Erdős ternary digits conjecture (1979): The only n with 2^n having no digit 2 in base 3 are n = 0, 2, 8.
+
+I want to understand what a proof of this conjecture would look like structurally.
+
+RESEARCH TASK:
+Analyze proofs of "nearby" theorems - results that share structural features with Erdős but were actually proved. For each, extract the proof template.
+
+1. SUBSPACE THEOREM APPLICATIONS
+   - Schmidt's Subspace Theorem
+   - S-unit equations
+   - Dimitrov-Howe's "≤25 ones" result uses this approach
+   - What's the template? Why does it work for bounded digit count but not unbounded?
+
+2. TRANSCENDENCE / ALGEBRAIC INDEPENDENCE
+   - Baker's theorem on linear forms in logarithms
+   - Gel'fond-Schneider theorem
+   - Does log_3(2) being transcendental help?
+
+3. MEASURE RIGIDITY PROOFS
+   - Furstenberg's ×2,×3 conjecture (partial results)
+   - Rudolph's theorem
+   - Lindenstrauss-Kleinbock-Margulis on homogeneous dynamics
+   - What's the template for "×p and ×q have no common structure"?
+
+4. COMBINATORIAL / COVERING ARGUMENTS
+   - Covering systems for digit problems
+   - Sieve methods
+   - What combinatorial structure would force digit 2 to appear?
+
+5. AUTOMATA-THEORETIC PROOFS
+   - Cobham's theorem proof structure
+   - How do you prove a sequence is NOT automatic?
+   - Path-set emptiness arguments
+
+For each template, assess:
+- What input does it require?
+- What does it output?
+- Why does it fail for the full Erdős conjecture?
+- What modification might make it work?
+
+Identify the proof template most likely to succeed for Erdős.

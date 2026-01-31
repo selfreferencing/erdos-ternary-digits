@@ -1,0 +1,53 @@
+RESEARCH PROMPT: Direct Literature Search for Erdős Ternary Digits
+
+RESEARCH TASK:
+Conduct a comprehensive literature search for results related to the Erdős ternary digits conjecture.
+
+SPECIFIC SEARCHES NEEDED:
+
+1. THE CORE PROBLEM
+   - Search for: "Erdős ternary digits conjecture"
+   - Search for: "powers of 2 base 3 digit 2"
+   - Search for: "2^n ternary expansion"
+   - Find all papers directly addressing this conjecture
+
+2. KEY AUTHORS TO INVESTIGATE
+   - Jeffrey Lagarias (Michigan)
+   - William Abram
+   - Artem Bolshakov
+   - Robert Saye (computational verification)
+   - Vesselin Dimitrov
+   - Roger Howe
+   - Find their papers on this topic
+
+3. RELATED CONJECTURES
+   - Search for: "digit sum powers of 2"
+   - Search for: "Gel'fond digit problems"
+   - Search for: "normality of powers"
+   - Find theorems about digit distribution in exponential sequences
+
+4. 3-ADIC APPROACH
+   - Search for Lagarias's papers on Z_3 formulation
+   - Search for: "exceptional set dimension digit avoidance"
+   - Search for: "path-set fractals"
+   - Find the best dimension bounds
+
+5. SHRINKING TARGETS / DYNAMICAL
+   - Search for: "shrinking target irrational rotation"
+   - Search for: "Borel-Cantelli rotations"
+   - Search for: "hitting times Cantor set"
+   - Find theorems about orbits hitting fractal targets
+
+6. RECENT WORK (2020-2026)
+   - Search arXiv for recent preprints
+   - Check for any claimed proofs or major progress
+   - Look for Ren-Roettger (2025) on digit frequencies
+
+For each significant paper found, provide:
+- Full citation
+- Main result (theorem statement)
+- Technique used
+- How it relates to the Erdős conjecture
+- What gap remains
+
+Compile a bibliography organized by approach.

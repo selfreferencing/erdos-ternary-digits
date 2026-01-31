@@ -1,0 +1,58 @@
+GEMINI DEEP RESEARCH: Computational Verification and Heuristics for Erdős
+
+RESEARCH QUESTION:
+What is known from computational experiments about the Erdős ternary digits conjecture, and what heuristics predict its truth?
+
+CONTEXT:
+The conjecture has been verified computationally to extremely large values. Understanding the computational evidence and the probabilistic heuristics gives insight into what a proof might need.
+
+SPECIFIC QUESTIONS TO RESEARCH:
+
+1. SAYE'S VERIFICATION (2022)
+   - Paper: Journal of Integer Sequences
+   - Verified to n ≤ 2·3^45 ≈ 5.9×10^21
+   - What algorithm was used?
+   - What's the computational barrier to going further?
+   - Any near-misses or interesting patterns found?
+
+2. EARLIER COMPUTATIONS
+   - History of computational verification
+   - Who verified what, when?
+   - Did any computations find unexpected structure?
+
+3. THE PROBABILISTIC HEURISTIC
+   - If ternary digits were random: P(no digit 2 in k digits) = (2/3)^k
+   - Expected number of solutions: Σ (2/3)^{n·log_3(2)} ≈ Σ (0.77)^n < ∞
+   - This predicts only finitely many solutions
+   - How well does reality match the heuristic?
+
+4. DIGIT FREQUENCY STATISTICS
+   - Ren-Roettger (2025): arXiv:2511.03861
+   - What's known about limiting frequencies of digits in 2^n?
+   - Is equidistribution of digits provable or just observed?
+   - Any anomalies in digit distribution?
+
+5. PATTERNS IN SMALL CASES
+   - n = 0: 2^0 = 1 = (1)_3
+   - n = 2: 2^2 = 4 = (11)_3
+   - n = 8: 2^8 = 256 = (100111)_3
+   - Why these specific values? Any structural reason?
+   - Is there a pattern that suggests why no more exist?
+
+6. RELATED COMPUTATIONAL SEARCHES
+   - Powers of 2 in other bases
+   - Powers of other primes in base 3
+   - What patterns emerge?
+
+7. CLAIMED PROOFS
+   - Spencer (Academia.edu): Claims proof via "carry-exclusion"
+   - Any other claimed proofs?
+   - Status of these claims (verified? rejected? unknown?)
+
+8. WHAT COMPUTATION CANNOT SHOW
+   - Even verifying to 10^100 wouldn't prove the conjecture
+   - What's the theoretical barrier?
+   - Could there be a very large counterexample?
+
+DELIVERABLE:
+A comprehensive survey of computational and heuristic evidence, with assessment of what we can and cannot conclude from it.

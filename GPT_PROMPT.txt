@@ -1,0 +1,34 @@
+I have a Lean 4 formalization of the Erdős ternary digits conjecture (for n > 8, 2^n contains digit 2 in base 3). The mathematical structure is complete, but the file has ~50 compilation errors.
+
+The file is attached: ErdosAnalytical.lean (~4400 lines)
+Toolchain: leanprover/lean4:v4.14.0 with Mathlib
+
+Please fix all compilation errors so the file builds cleanly with `lake build`.
+
+Common issues to fix:
+
+1. **Missing Mathlib lemmas**: `Nat.self_mod_pow_eq_ofDigits_take`, `Nat.ofDigits_inj_of_len_eq`, etc. don't exist. Find equivalents or prove inline.
+
+2. **Multiplication order mismatches**: Many `a * b * c` vs `a * (b * c)` issues. Use `ring` or explicit rewrites.
+
+3. **Large exponents**: Add near the top:
+   ```lean
+   set_option maxRecDepth 1000
+   set_option exponentiation.threshold 600000
+   ```
+
+4. **Nat.pow_pos errors**: These need explicit arguments like `Nat.pow_pos (by decide : 0 < 3) k`
+
+5. **ModEq vs % confusion**: Be consistent between `n ≡ m [MOD k]` and `n % k = m % k`
+
+The key theorems to preserve are:
+- `case_B_induction_principle` (j = 3 + m·3^12 family)
+- `case_C_induction_principle` (j = m·3^12 family)
+- `full_classification_0_to_10` (computational base)
+
+Work through the file top-to-bottom, fixing errors section by section. Test with:
+```bash
+lake env lean ErdosAnalytical.lean 2>&1 | grep "error:"
+```
+
+Return the fully corrected file.
