@@ -1,3 +1,7 @@
+This attempt failed. The claim below is wrong. The Lean in this repository does not prove the Erdős ternary digits conjecture: several results are assumed as axioms, and the main theorem as stated does not establish the conjecture. See `ErdosTernaryDigits_WhatWentWrong.md` (January 30, 2026) for what went wrong. The repository is kept, unchanged below this notice, as a record. The README that follows is the original, inaccurate one.
+
+Corrected September 29, 2026.
+
 # Erdős Ternary Digits Conjecture - Formal Verification in Lean 4
 
 **A machine-checked proof that for all n > 8, 2^n contains at least one digit 2 in base 3.**
